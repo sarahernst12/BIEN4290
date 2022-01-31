@@ -6,13 +6,28 @@
 #include <fstream>
 #include <string>
 
-class myClass{
-    public:
-        int get_num_students();
-        std::string get_name();
-        void set_num_students(int num);
+//namespaces allow you to provide context necessary to track different things
+//give you address
+//mySpace::yourSpace::myClass
 
-    private:
-        int num_students;
-        std::string className;
-};
+namespace mySpace{
+
+    //namespaces can be nested
+    namespace yourSpace{
+
+        class myClass{
+            public:
+                //construct myclass with an initial name and number of students
+                myClass(std::string name, int init_num_students); 
+                myClass(std::string name);
+
+                int get_num_students();
+                std::string get_name();
+                void set_num_students(int num);
+
+            private:
+                int num_students;
+                std::string className;
+        };
+    }
+}
