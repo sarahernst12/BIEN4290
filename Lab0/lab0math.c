@@ -1,7 +1,8 @@
-// date created: 1/25/22
-// creator: sarah ernst
-// title: lab 0 part V
-// description: opening file created in previous section, read contents, sum numbers, and output summation into new file
+/* date created: 1/25/22
+* creator: sarah ernst
+* title: lab 0 part V
+* description: opening file created in previous section, read contents, sum numbers, and output summation into new file
+*/
 #include <stdio.h>
 #include <stdlib.h>
 
