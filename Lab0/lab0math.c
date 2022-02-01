@@ -11,7 +11,9 @@ int main(int argc, char *argv[]) {
     FILE *fp;
     FILE *output;
     int numarray[20];
-    int i;
+    char chararray[1000];
+    int i = 0;
+    int j = 0;
     int sum = 0;
 
     fp = fopen("randomnum.txt", "r");
@@ -39,6 +41,9 @@ int main(int argc, char *argv[]) {
 
     //print out sum of all numbers into output file executable
     fprintf(output, "Sum of all numbers is: %d\n\n", sum);
+
+    //print out contents of output file    
+    printf("Sum of all numbers is: %d\n\n", sum);
 
     fclose(fp);
     fclose(output);
