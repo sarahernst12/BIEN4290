@@ -1,2 +1,0 @@
-Sum of all numbers is: 18625
-

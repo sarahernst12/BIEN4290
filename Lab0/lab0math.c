@@ -1,4 +1,5 @@
-/* date created: 1/25/22
+/* 
+* date created: 1/25/22
 * creator: sarah ernst
 * title: lab 0 part V
 * description: opening file created in previous section, read contents, sum numbers, and output summation into new file
@@ -15,39 +16,32 @@ int main(int argc, char *argv[]) {
 
     fp = fopen("randomnum.txt", "r");
 
-    //check if reading file correctly
-    if (fp != NULL) {
-        //printf("YAY!\n\n);
-        //exit(1);
-    }
-    else printf("error reading randomnumber text file");
-
-    //reading in numbers
-    for (i = 0; i < 20; i++){
-        fscanf(fp, "%d", &numarray[i]);
+    //check if reading file correctly, exit if read operation unsuccessful
+    if (fp == NULL) {
+        printf("error reading randomnumber text file\n");
+        exit(EXIT_FAILURE);
     }
 
-    for (i = 0; i < 20; i++){
+    //reading in numbers & summing all together
+    while(fscanf(fp, "%d", &numarray[i]) != EOF){
         sum = sum + numarray[i];
+        //printf("sum now equals: %d\n", sum);
     }
 
-    //printf("Sum of all numbers is: %d\n\n", sum);
-    //for (i = 0; i < 20; i++){
-    //    printf("Number is: %d\n\n", numarray[i]);
-    //}
-
+    //opening new file to write to
     output = fopen("summationoutput.txt", "w");
 
-    //check if reading file correctly
-    if (output != NULL) {
-        //printf("YAY!\n\n);
-        //exit(1);
+    //check if reading file correctly, exit if write operation unsuccessful
+    if (output == NULL) {
+        printf("error creating summationoutput text file\n");
+        exit(EXIT_FAILURE);
     }
-    else printf("error creating summationoutput text file");
 
+    //print out sum of all numbers into output file executable
     fprintf(output, "Sum of all numbers is: %d\n\n", sum);
 
     fclose(fp);
     fclose(output);
+    return 0;
 }
 
