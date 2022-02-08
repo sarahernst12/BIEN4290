@@ -69,13 +69,33 @@ int main(int argc, char* argv[]){
         standarddev = test.lab1::getstandarddev();
         std::cout << "standard deviation is: " << standarddev << "\n";
 
-        //print out histogram data -- CURRENTLY BROKEN 1/8
+        //print out histogram data -- WORKS FOR TEST VECTOR
+        std::vector<float> tester{1, 2, 3, 4, 5, 4, 3, 2, 1};
+
+
         test.findhistogram(data);
         histogramdata = test.gethistogram();
-        std::cout << "the values of each bin are :\n";
-        for(int i = 0; i < 15; i++){
-            std::cout<< histogramdata[i] << "\n";
+        std::cout << "\t HISTOGRAM\n";
+        for(int i = 7; i >= 1; i--){
+
+            std::cout.width(2);
+            std::cout << "" << i << " | ";
+            for (int j = 0; j < tester.size(); j++){
+                if(tester[j] >= i){
+                    std::cout << "* ";
+                }
+                else
+                    std::cout << "  ";
+                }
+            
+            std::cout << "\n";
         }
+        std::cout << "    | ";
+        for(int j = 0; j < tester.size(); j++){
+            std::cout << tester[j] << " ";
+        }
+        std::cout << "\n";
+        
     
     }
     else{
