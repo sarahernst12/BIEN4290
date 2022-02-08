@@ -8,7 +8,7 @@
 
 
 #include "ernsts_stats.hpp"
-#include "ernsts_stats.cpp"
+#include "ernsts_corr.cpp"
 #include <iostream> // header in standard library
 #include <iterator>
 #include <fstream>
@@ -19,27 +19,48 @@
 //using namespace ernsts;
 
 //creating stream for file opening
-std::ifstream openedfile;
+std::ifstream openedfilex;
+std::ifstream openedfiley;
+
 
 int main(int argc, char* argv[]){
-    float m1, m2;
-    ernsts::lab1 test(m1, m2);
-    
+    ernstscorr::lab1corr tester;
 
-    std::string filepath;
+    std::string filex, filey;
 
-    std::cout <<"Please input path of input data file : ";
-    std::string filename;
-    std::cin >> filename;
-    
-    openedfile.open(filename);
+    //handling file x for comparison
+    std::cout <<"Please input path of input data file 1 : ";
+    std::string filenamex;
+    std::cin >> filenamex;
+    openedfilex.open(filenamex);
 
-    if(openedfile.is_open()){
-        std::istream_iterator<float> start(openedfile), end;
-        std::vector<float> data(start, end);
-        int size = data.size();
-        
+    //handling file y for comparison
+    std::cout <<"Please input path of input data file 2: ";
+    std::string filenamey;
+    std::cin >> filenamey;
+    openedfiley.open(filenamey);
+
+    float correlation;
+
+    if((openedfilex.is_open()) && (openedfiley.is_open())){
+        std::istream_iterator<float> startx(openedfilex), endx;
+        std::vector<float> datax(startx, endx);
+        //int sizex = datax.size();
+
+        std::istream_iterator<float> starty(openedfiley), endy;
+        std::vector<float> datay(starty, endy);
+        //int sizey = datay.size();
+
+        //print out correlation value
+        tester.findcorrelation(datax, datay);
+        correlation = tester.getcorrelation();
+        std::cout << correlation << "\n"; //printing correlation value
     
+    }
+    else{
+        std::cout << "error: could not properly read data files\n";
+        return 1;
     }
     
 }
+

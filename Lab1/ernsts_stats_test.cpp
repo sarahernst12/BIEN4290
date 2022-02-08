@@ -8,6 +8,7 @@
 
 #include "ernsts_stats.hpp"
 #include "ernsts_stats.cpp"
+#include "ernsts_corr.cpp"
 #include <iostream> // header in standard library
 #include <iterator>
 #include <fstream>
@@ -21,23 +22,29 @@
 std::ifstream openedfile;
 
 int main(int argc, char* argv[]){
+    //what is the point of this??
     float m1, m2;
     ernsts::lab1 test(m1, m2);
-    
 
-    std::string filepath;
-
+    //getting name of input file
     std::cout <<"Please input path of input data file : ";
     std::string filename;
     std::cin >> filename;
     
+    //opening file
     openedfile.open(filename);
 
+    //checking if file is open
     if(openedfile.is_open()){
+        //itereate through file from start to end
         std::istream_iterator<float> start(openedfile), end;
+        //put start and end of file into vector data
         std::vector<float> data(start, end);
+
+        //get size of vector
         int size = data.size();
 
+        //create temporary return variables for testing future function outputs to screen
         float maximum;
         float minimum; 
         float mean;
@@ -64,7 +71,7 @@ int main(int argc, char* argv[]){
         standarddev = test.getstandarddev();
         std::cout << "standard deviation is: " << standarddev << "\n";
 
-        //print out histogram data
+        //print out histogram data -- CURRENTLY BROKEN 1.7
         test.findhistogram(data);
         histogramdata = test.gethistogram();
         std::cout << "the values of each bin are :\n";
@@ -72,6 +79,10 @@ int main(int argc, char* argv[]){
             std::cout<< histogramdata[i] << "\n";
         }
     
+    }
+    else{
+        std::cout << "error: could not properly read data file\n";
+        return 1;
     }
     
 }

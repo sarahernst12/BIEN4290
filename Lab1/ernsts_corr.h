@@ -17,13 +17,13 @@
 #define ernstslab1corr
 
 //namespaces can be nested
-namespace ernsts{
+namespace ernstscorr{
 
     class lab1corr{
         public:
             //construct new class with an initial name and number of students
             //what is the point of this??
-            lab1corr(float, float);
+            lab1corr();
 
             //setter functions
             void findcorrelation(std::vector<float> x, std::vector<float> y);
