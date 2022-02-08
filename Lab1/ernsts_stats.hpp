@@ -29,14 +29,14 @@ namespace ernsts{
             void findmin(std::vector<float> data);
             void findmax(std::vector<float> data);
             void findmean(std::vector<float> data);
-            void standarddev(std::vector<float> data);
+            void findstandarddev(std::vector<float> data);
             void histogram(std::vector<float> data);
 
             //getter functions
             float getmin();
             float getmax();
             float getmean();
-            float standarddev();
+            float getstandarddev();
             std::vector<float> histogram();
 
         private:
