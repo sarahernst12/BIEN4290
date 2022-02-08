@@ -7,8 +7,7 @@
 */
 
 #include "ernsts_stats.hpp"
-#include "ernsts_corr.h"
-#include "ernsts_stats.cpp"
+#include "ernsts_corr.hpp"
 #include <iostream> // header in standard library
 #include <cmath> // header to include for standarddev function
 #include <vector>
@@ -18,16 +17,6 @@ ernstscorr::lab1corr::lab1corr(){
     //setting all class variables
     this->correlationvalue;
 }
-
-/* //included ernsts_stats.cpp file instead
-ernsts::lab1::lab1(float min, float max){
-    this->minimumvalue;
-    this->maximumvalue;
-    this->meanvalue;
-    this->standarddevvalue;
-    std::vector<float> histogramvalue{};
-}
-*/
 
 void ernstscorr::lab1corr::findcorrelation(std::vector<float> x, std::vector<float> y) {
     float m1, m2;

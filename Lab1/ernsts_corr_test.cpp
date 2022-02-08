@@ -8,7 +8,7 @@
 
 
 #include "ernsts_stats.hpp"
-#include "ernsts_corr.cpp"
+#include "ernsts_corr.hpp"
 #include <iostream> // header in standard library
 #include <iterator>
 #include <fstream>
@@ -22,7 +22,7 @@
 std::ifstream openedfilex;
 std::ifstream openedfiley;
 
-/*
+
 int main(int argc, char* argv[]){
     ernstscorr::lab1corr tester;
 
@@ -63,5 +63,3 @@ int main(int argc, char* argv[]){
     }
     
 }
-
-*/

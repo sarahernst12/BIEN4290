@@ -7,8 +7,6 @@
 */
 
 #include "ernsts_stats.hpp"
-#include "ernsts_stats.cpp"
-//#include "ernsts_corr.cpp"
 #include <iostream> // header in standard library
 #include <iterator>
 #include <fstream>
@@ -49,40 +47,69 @@ int main(int argc, char* argv[]){
         float standarddev;
         std::vector<float> histogramdata{};
 
-        //find max
-        test.lab1::findmax(data);
-        maximum = test.lab1::getmax();
-        std::cout << "maximum is: " << maximum << "\n";
-
-        //find min
-        test.lab1::findmin(data);
-        minimum = test.lab1::getmin();
-        std::cout << "minimum is: " << minimum << "\n";
+        //printing number of data points analyzed
+        std::cout << "number of data points analyzed is: " << size << "\n";
 
         //find mean
         test.lab1::findmean(data);
         mean = test.lab1::getmean();
-        std::cout << "mean is " << mean <<"\n";
+        std::cout << "mean is: " << mean <<"\n";
 
         //find standard dev
         test.lab1::findstandarddev(data);
         standarddev = test.lab1::getstandarddev();
         std::cout << "standard deviation is: " << standarddev << "\n";
 
+        //find min
+        test.lab1::findmin(data);
+        minimum = test.lab1::getmin();
+        std::cout << "minimum is: " << minimum << "\n";
+
+        //find max
+        test.lab1::findmax(data);
+        maximum = test.lab1::getmax();
+        std::cout << "maximum is: " << maximum << "\n";
+
         //print out histogram data -- WORKS FOR TEST VECTOR
-        std::vector<float> tester{1, 2, 3, 4, 5, 4, 3, 2, 1};
+        //std::vector<float> tester{1, 2, 3, 4, 5, 4, 3, 2, 1};
 
 
         test.findhistogram(data);
         histogramdata = test.gethistogram();
+
+        //finding max value of histogram data
+        test.findmax(histogramdata);
+        
         std::cout << "\t HISTOGRAM\n";
-        for(int i = 7; i >= 1; i--){
+        // for(int i = 0; i <= histogramdata.size(); i++){
+        //     std::cout<< "" << histogramdata[i] << "\n";
+        // }
+
+        for(int i = 1; i <= histogramdata.size(); i++){
+            if(i < 10) {
+                std::cout << "\n bin: " << i << " | ";
+            }
+            else{
+                std::cout << "\n bin: " << i << "| ";
+            }
+            for(int j = 0; j < histogramdata[i]; j++){
+                std::cout << "*";
+            }
+            std::cout << "      " << histogramdata[i];
+        }
+        std::cout << "\n";
+
+        
+        /*
+        for(int i = test.getmax(); i >= 1; i--){
 
             std::cout.width(2);
-            std::cout << "" << i << " | ";
-            for (int j = 0; j < tester.size(); j++){
-                if(tester[j] >= i){
-                    std::cout << "* ";
+            std::cout << "" << i << " | \t";
+
+            for (int j = 0; j < histogramdata.size(); j++){
+                
+                if(histogramdata[j] >= i){
+                    std::cout << "*   \t ";
                 }
                 else
                     std::cout << "  ";
@@ -91,11 +118,12 @@ int main(int argc, char* argv[]){
             std::cout << "\n";
         }
         std::cout << "    | ";
-        for(int j = 0; j < tester.size(); j++){
-            std::cout << tester[j] << " ";
+        for(int j = 0; j < histogramdata.size(); j++){
+            std::cout << histogramdata[j] << " \t";
         }
         std::cout << "\n";
-        
+        */
+       
     
     }
     else{

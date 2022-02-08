@@ -110,14 +110,26 @@ void ernsts::lab1::findhistogram(std::vector<float> data){
 
     //std::vector<float>::iterator pRet = histogramdata.end(); //example from linuxhint
     int counter[15];
+    for(int i = 0; i < 15; i++){
+        counter[i] = 0;
+    }
+
+    binlow = this->meanvalue - (3 * this->standarddevvalue);
+    binhigh = this->meanvalue + (3 * this->standarddevvalue);
+
+    //populating histogramdata
+    // for(int i = 0; i < 14; i++){
+    //     histogramdata.insert(i, 0);
+    // }
     
     for(int i = 0; i < size; i++){
         
-        binlow = this->meanvalue - (3 * this->standarddevvalue);
-        binhigh = this->meanvalue - (3 * this->standarddevvalue);
-
         //bin 1
-        if(data[i] >= binlow && data[i] < (binlow+binwidth)){
+        if(data[i] >= binlow && data[i] < (binlow+binwidth)){ 
+            counter[0]++;
+            continue;
+        }
+        else if(data[i] < binlow){ //anything less than binlow will also be here
             counter[0]++;
             continue;
         }
@@ -188,7 +200,11 @@ void ernsts::lab1::findhistogram(std::vector<float> data){
             continue;
         }
         //bin 15
-        else if(data[i] >= (binlow + (14*binwidth)) && data[i] < binhigh){
+        else if(data[i] >= (binlow + (14*binwidth)) && data[i] < binhigh){ 
+            counter[14]++;
+            continue;
+        }
+        else if(data[i] > binhigh){ //everything above binhigh will be in last bin
             counter[14]++;
             continue;
         }
@@ -201,8 +217,9 @@ void ernsts::lab1::findhistogram(std::vector<float> data){
     for (int j = 0; j < 15; j++){
         //starting from beginning of histogramdata vector, adding one, and inputting counter
         //std::vector<float>::iterator pRet = 
-        histogramdata.insert(histogramdata.end(), 1, counter[j]);
-        std::vector<float>::iterator testing= histogramdata.insert(histogramdata.end(), 1, counter[j]);        //needed the itterator portion
+        //histogramdata.insert(histogramdata.end(), 1, counter[j]);
+        //std::vector<float>::iterator testing= histogramdata.insert(histogramdata.end(), 1, counter[j]);        //needed the itterator portion
+        histogramdata.push_back(counter[j]);
     }
 
     this->histogramvalue = histogramdata;
