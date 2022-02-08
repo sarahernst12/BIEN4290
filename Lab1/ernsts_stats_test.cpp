@@ -8,15 +8,13 @@
 
 #include "ernsts_stats.hpp"
 #include "ernsts_stats.cpp"
-#include "ernsts_corr.cpp"
+//#include "ernsts_corr.cpp"
 #include <iostream> // header in standard library
 #include <iterator>
 #include <fstream>
 #include <sstream>
 #include <algorithm>
 #include <vector>
-
-//using namespace ernsts;
 
 //creating stream for file opening
 std::ifstream openedfile;
@@ -62,20 +60,20 @@ int main(int argc, char* argv[]){
         std::cout << "minimum is: " << minimum << "\n";
 
         //find mean
-        test.findmean(data);
-        mean = test.getmean();
+        test.lab1::findmean(data);
+        mean = test.lab1::getmean();
         std::cout << "mean is " << mean <<"\n";
 
         //find standard dev
-        test.findstandarddev(data);
-        standarddev = test.getstandarddev();
+        test.lab1::findstandarddev(data);
+        standarddev = test.lab1::getstandarddev();
         std::cout << "standard deviation is: " << standarddev << "\n";
 
-        //print out histogram data -- CURRENTLY BROKEN 1.7
+        //print out histogram data -- CURRENTLY BROKEN 1/8
         test.findhistogram(data);
         histogramdata = test.gethistogram();
         std::cout << "the values of each bin are :\n";
-        for(int i = 0; i < size; i++){
+        for(int i = 0; i < 15; i++){
             std::cout<< histogramdata[i] << "\n";
         }
     

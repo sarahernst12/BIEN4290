@@ -22,7 +22,7 @@
 std::ifstream openedfilex;
 std::ifstream openedfiley;
 
-
+/*
 int main(int argc, char* argv[]){
     ernstscorr::lab1corr tester;
 
@@ -64,3 +64,4 @@ int main(int argc, char* argv[]){
     
 }
 
+*/

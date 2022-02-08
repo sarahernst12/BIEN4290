@@ -10,6 +10,7 @@
 #include <iostream> // header in standard library
 #include <cmath> // header to include for standarddev function
 #include <vector>
+#include <string>
 
 //using namespace ernsts;
 
@@ -102,84 +103,113 @@ float ernsts::lab1::getstandarddev(){
 void ernsts::lab1::findhistogram(std::vector<float> data){
     //write how to calculate histogram here
     int size = data.size();
-    float binlow, binhigh, samplemean;
-    float binwidth = 0.4 * (this->standarddevvalue);
-    std::vector<float> histogramdata{0}; 
+    float binlow = 0, binhigh = 0, samplemean = 0;
+    float binwidth = 0;
+    binwidth = 0.4 * (this->standarddevvalue);
+    std::vector<float> histogramdata{}; 
+
+    //std::vector<float>::iterator pRet = histogramdata.end(); //example from linuxhint
+    int counter[15];
     
     for(int i = 0; i < size; i++){
-        
         
         binlow = this->meanvalue - (3 * this->standarddevvalue);
         binhigh = this->meanvalue - (3 * this->standarddevvalue);
 
         //bin 1
         if(data[i] >= binlow && data[i] < (binlow+binwidth)){
-            histogramdata[0]++;
+            counter[0]++;
+            continue;
         }
         //bin 2
         else if(data[i] >= (binlow + binwidth) && data[i] < (binlow + (2*binwidth))){
-            histogramdata[1]++;
+            counter[1]++;
+            continue;
         }
         //bin 3
         else if(data[i] >= (binlow + (2*binwidth)) && data[i] < (binlow + (3*binwidth))){
-            histogramdata[2]++;
+            counter[2]++;
+            continue;
         }
         //bin 4
         else if(data[i] >= (binlow + (3*binwidth)) && data[i] < (binlow + (4*binwidth))){
-            histogramdata[3]++;
+            counter[3]++;
+            continue;
         }
         //bin 5
         else if(data[i] >= (binlow + (4*binwidth)) && data[i] < (binlow + (5*binwidth))){
-            histogramdata[4]++;
+            counter[4]++;
+            continue;
         }
         //bin 6
         else if(data[i] >= (binlow + (5*binwidth)) && data[i] < (binlow + (6*binwidth))){
-            histogramdata[5]++;
+            counter[5]++;
+            continue;
         }
         //bin 7
         else if(data[i] >= (binlow + (6*binwidth)) && data[i] < (binlow + (7*binwidth))){
-            histogramdata[6]++;
+            counter[6]++;
+            continue;
         }
         //bin 8
         else if(data[i] >= (binlow + (7*binwidth)) && data[i] < (binlow + (8*binwidth))){
-            histogramdata[7]++;
+            counter[7]++;
+            continue;
         }
         //bin 9
         else if(data[i] >= (binlow + (8*binwidth)) && data[i] < (binlow + (9*binwidth))){
-            histogramdata[8]++;
+            counter[8]++;
+            continue;
         }
         //bin 10
         else if(data[i] >= (binlow + (9*binwidth)) && data[i] < (binlow + (10*binwidth))){
-            histogramdata[9]++;
+            counter[9]++;
+            continue;
         }
         //bin 11
         else if(data[i] >= (binlow + (10*binwidth)) && data[i] < (binlow + (11*binwidth))){
-            histogramdata[10]++;
+            counter[10]++;
+            continue;
         }
         //bin 12
         else if(data[i] >= (binlow + (11*binwidth)) && data[i] < (binlow + (12*binwidth))){
-            histogramdata[11]++;
+            counter[11]++;
+            continue;
+
         }
         //bin 13
         else if(data[i] >= (binlow + (12*binwidth)) && data[i] < (binlow + (13*binwidth))){
-            histogramdata[12]++;
+            counter[12]++;
+            continue;
         }
         //bin 14
         else if(data[i] >= (binlow + (13*binwidth)) && data[i] < (binlow + (14*binwidth))){
-            histogramdata[13]++;
+            counter[13]++;
+            continue;
         }
         //bin 15
         else if(data[i] >= (binlow + (14*binwidth)) && data[i] < binhigh){
-            histogramdata[14]++;
+            counter[14]++;
+            continue;
+        }
+        else{
+            continue;
         }
         
     }
 
-    this->histogramvalue = histogramdata;
-    
-    //how do i even start thinking about this?????
+    for (int j = 0; j < 15; j++){
+        //starting from beginning of histogramdata vector, adding one, and inputting counter
+        //std::vector<float>::iterator pRet = 
+        histogramdata.insert(histogramdata.end(), 1, counter[j]);
+        std::vector<float>::iterator testing= histogramdata.insert(histogramdata.end(), 1, counter[j]);        //needed the itterator portion
+    }
 
-    //this->classhistogram = temphistogram;
+    this->histogramvalue = histogramdata;
+
+
+    //this->histogramvalue = histogramdata;
+    
 }
 
 std::vector<float> ernsts::lab1::gethistogram(){
@@ -187,3 +217,8 @@ std::vector<float> ernsts::lab1::gethistogram(){
 
     return this->histogramvalue;
 }
+
+
+    // int main(){
+    //     return 0;
+    // }

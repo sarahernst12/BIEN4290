@@ -14,6 +14,7 @@
 #include <vector>
 #include <algorithm>
 
+//header guards
 #ifndef ernstslab1
 #define ernstslab1
 
@@ -50,26 +51,4 @@ namespace ernsts{
     };
 }
 
-
-
-
-/*
-//calculating maximum of input arrays
-float MAX(vector<float> a){
-    return *max_element(a.begin(), a.end());
-}
-
-//calculating minimum of input arrays
-float MIN(float values[]){
-    int *min = std::min_element(std::begin(values), std::end(values));
-
-    //std::cout << "The min element is " << *min << std::endl;
-    return *min;
-}
-
-//calculating standard deviation of input arrays
-float STDEV(float values[], int n){
-    MEAN(values[], n);
-}
-*/
 #endif
