@@ -1,0 +1,2 @@
+Please input path of input data file 1 : Please input path of input data file 2: 2.22676e+08
+/home/ernsts/BIEN4290/Lab1/EEG_DATA/ERP00 vs. 2
