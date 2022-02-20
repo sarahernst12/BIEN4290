@@ -25,10 +25,9 @@ namespace genome{
             lab2(float, float);
 
             //setter functions
-            void sumarray(float array[]); //sums all elements of an array
-            void finddiff(float data1[], float data2[], float diffarray[]); //subtracts one array from another element by element
-            void finddivide(float ogarr[], float newarray[], float constant); //divides values of array by a constant
-
+            void sumarray(std::vector<float> data); //sums all elements of an array
+            void finddiff(std::vector<float> data1, std::vector<float> data2, std::vector<float> difference); //subtracts one array from another element by element
+            void finddivide(std::vector<float> oggarr, std::vector<float> newarr, float constant); //divides values of array by a constant
 
             //getter functions
             float getsumarray();
