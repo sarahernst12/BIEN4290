@@ -36,7 +36,7 @@ float genome::lab2::getsumarray(){
 //calculating difference between two arrays
 void genome::lab2::finddiff(std::vector<float> data1, std::vector<float> data2, std::vector<float> difference){
     int size1 = data1.size();
-
+    
     for(int i = 0; i < size1; i++){
         difference[i] = data1[i] - data2[i];
     }
