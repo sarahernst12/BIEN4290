@@ -20,7 +20,7 @@ namespace genome{
     class preproc{
         public: 
             //construct lab1 with an initial name and number of students
-            preproc(float, float);
+            preproc(float one, float two);
 
             //setter functions
             void logratio(std::vector<float> numer, std::vector<float> denom, std::vector<float> logratio);

@@ -8,7 +8,6 @@
 #include "ernsts_stats.hpp"
 #include "ernsts_vector_ops.hpp"
 #include <iostream> // header in standard library
-#include <iostream> // header in standard library
 #include <iterator>
 #include <fstream>
 #include <sstream>
@@ -18,7 +17,8 @@
 #include <filesystem>
 
 //creating stream for file opening
-std::ifstream red, redb, green, greenb, cali;
+std::ifstream red, redb, green, greenb;
+std::ofstream cali;
 
 void genome::preproc::logratio(std::vector<float> numer, std::vector<float> denom, std::vector<float> logratio){
     int size = numer.size();
@@ -50,9 +50,9 @@ int main(int argc, char* argv[]){
     }      
 
     //itereate through file from start to end
-    std::istream_iterator<float> start(red), end;
+    std::istream_iterator<float> startr(red), endr;
     //put start and end of file into vector data
-    std::vector<float> redcell(start, end);
+    std::vector<float> redcell(startr, endr);
     
     //get size of vector
     int sizered = redcell.size();
@@ -68,9 +68,9 @@ int main(int argc, char* argv[]){
         return 1;
     }  
     //itereate through file from start to end
-    std::istream_iterator<float> start(redb), end;
+    std::istream_iterator<float> startrb(redb), endrb;
     //put start and end of file into vector data
-    std::vector<float> backgroundred(start, end);
+    std::vector<float> backgroundred(startrb, endrb);
     //get size of vector
     int sizebackr = backgroundred.size();
 
@@ -86,9 +86,9 @@ int main(int argc, char* argv[]){
     }  
 
     //itereate through file from start to end
-    std::istream_iterator<float> start(green), end;
+    std::istream_iterator<float> startg(green), endg;
     //put start and end of file into vector data
-    std::vector<float> greencell(start, end);
+    std::vector<float> greencell(startg, endg);
     //get size of vector
     int sizegreen = greencell.size();
     
@@ -103,9 +103,9 @@ int main(int argc, char* argv[]){
     }  
    
     //itereate through file from start to end
-    std::istream_iterator<float> start(greenb), end;
+    std::istream_iterator<float> startgb(greenb), endgb;
     //put start and end of file into vector data
-    std::vector<float> backgroundgreen(start, end);
+    std::vector<float> backgroundgreen(startgb, endgb);
     //get size of vector
     int sizebackg = backgroundgreen.size();
 
@@ -141,6 +141,12 @@ int main(int argc, char* argv[]){
         return 1;
     }  
 
+    //print logratio to cali data file
+    for(int i = 0; i < logratio.size(); i++){
+        cali << logratio[i] << "\n";
+    }
+
+    cali.close();
 
 
     //number of genes to be analyzed

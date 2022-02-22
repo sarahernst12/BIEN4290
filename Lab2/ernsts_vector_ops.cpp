@@ -53,6 +53,7 @@ void genome::lab2::finddivide(std::vector<float> oggarr, std::vector<float> newa
     }
 }
 
+/*
 int main(int argc, char* argv[]){
     float min, max;
     float arraysum;
@@ -87,6 +88,5 @@ int main(int argc, char* argv[]){
 
     }
 
-
-
 }
+*/
