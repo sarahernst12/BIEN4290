@@ -1,8 +1,12 @@
 #makefile
-all: vectoropstats.exe 
 
-vectoropstats: ernsts_vector_ops.o ernsts_stats.o 
-	gcc -o vectoropstats.exe ernsts_vector_ops.o ernsts_stats.o -lm
+vectorops.o: ernsts_vector_ops.cpp ernsts_vector_ops.hpp
+	gcc -o vectorops $^
+
+lab1stats.o: ernsts_stats.cpp ernsts_stats.hpp ernsts_stats_test.cpp
+	g++ -o cppstats $^
+
+all: vectorops.o
 
 clean: 
 	rm *.c *.o all

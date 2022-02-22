@@ -51,6 +51,3 @@ void genome::lab2::finddivide(std::vector<float> oggarr, std::vector<float> newa
         newarr[i] = oggarr[i] / constant;
     }
 }
-
-
-
