@@ -15,12 +15,12 @@
 #define ernstslab2pre
 
 //namespaces can be nested
-namespace genome{
+namespace genomep{
 
     class preproc{
         public: 
             //construct lab1 with an initial name and number of students
-            preproc(float one, float two);
+            preproc(float m1, float m2);
 
             //setter functions
             void logratio(std::vector<float> numer, std::vector<float> denom, std::vector<float> logratio);

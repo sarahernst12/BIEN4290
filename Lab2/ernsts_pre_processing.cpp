@@ -14,13 +14,12 @@
 #include <cmath> // header to include for standarddev function
 #include <vector>
 #include <string>
-#include <filesystem>
 
 //creating stream for file opening
 std::ifstream red, redb, green, greenb;
 std::ofstream cali;
 
-void genome::preproc::logratio(std::vector<float> numer, std::vector<float> denom, std::vector<float> logratio){
+void genomep::preproc::logratio(std::vector<float> numer, std::vector<float> denom, std::vector<float> logratio){
     int size = numer.size();
     for(int i = 0; i < size; i++){
         logratio[i] = log10(numer[i] / denom[i]);
@@ -33,7 +32,7 @@ int main(int argc, char* argv[]){
     float m1, m2;
     ernsts::lab1 lab1(m1, m2);
     genome::lab2 lab2(m1, m2);
-    genome::preproc preproc(m1, m2);
+    genomep::preproc preproc(m1, m2);
 
     std::vector<float> redcorrected, rednormal;
     std::vector<float> greencorrected, greennormal;
