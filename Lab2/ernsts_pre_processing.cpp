@@ -20,14 +20,24 @@
 //creating stream for file opening
 std::ifstream red, redb, green, greenb, cali;
 
+void genome::preproc::logratio(std::vector<float> numer, std::vector<float> denom, std::vector<float> logratio){
+    int size = numer.size();
+    for(int i = 0; i < size; i++){
+        logratio[i] = log10(numer[i] / denom[i]);
+    }
+}
+
+
 int main(int argc, char* argv[]){
     //what is the point of this??
     float m1, m2;
     ernsts::lab1 lab1(m1, m2);
     genome::lab2 lab2(m1, m2);
+    genome::preproc preproc(m1, m2);
 
-    std::vector<float> redcorrected;
-    std::vector<float> greencorrected;
+    std::vector<float> redcorrected, rednormal;
+    std::vector<float> greencorrected, greennormal;
+    std::vector<float> logratio;
 
     //getting red name file
     std::cout <<"Please input file name containing data from sporulating cells (red): ";
@@ -99,13 +109,27 @@ int main(int argc, char* argv[]){
     //get size of vector
     int sizebackg = backgroundgreen.size();
 
+    //-------------------------------------
+    // doing preprocessing 
+    //-------------------------------------
+
     //substracting background intensities from red datasets
     lab2.finddiff(redcell, backgroundred, redcorrected);
-
     //subtracting background intensitites from green datasets
     lab2.finddiff(greencell, backgroundgreen, greencorrected); 
 
+    //finding means of corrected datasets
+    lab1.findmean(redcorrected);
+    float redmean = lab1.getmean();
+    lab1.findmean(greencorrected);
+    float greenmean = lab1.getmean();
 
+    //normalize corrected green data by green dataset mean
+    lab2.finddivide(redcorrected, rednormal, redmean); 
+    lab2.finddivide(greencorrected, greennormal, greenmean); 
+    
+    //find log ratio
+    preproc.logratio(rednormal, greennormal, logratio);
 
     //name of file data will be written
     std::cout <<"Please input file name where calibrated data will be written: ";
@@ -116,6 +140,7 @@ int main(int argc, char* argv[]){
         std::cout << "error: could not properly read cali data file\n";
         return 1;
     }  
+
 
 
     //number of genes to be analyzed
