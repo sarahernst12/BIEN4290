@@ -13,6 +13,7 @@
 #include <string>
 
 //using namespace ernsts;
+using namespace genome; 
 
 genome::lab2::lab2(float min, float max){
     //setting all class variables
@@ -50,4 +51,42 @@ void genome::lab2::finddivide(std::vector<float> oggarr, std::vector<float> newa
     for(int i = 0; i < size; i++){
         newarr[i] = oggarr[i] / constant;
     }
+}
+
+int main(int argc, char* argv[]){
+    float min, max;
+    float arraysum;
+    std::vector<float> hello;
+    std::vector<float> hello2;
+    std::vector<float> hello3;
+
+    for(int i = 0; i < 100; i++){
+        hello[i] = i;
+        hello2[i] = i*2;
+        //hello3[i] = i - 4;
+    }
+
+    genome::lab2 test(min, max);
+
+    //testing sumarray
+    test.sumarray(hello);
+    arraysum = test.getsumarray();
+    std::cout << "sum of array is: " << arraysum << "\n";
+
+    //testing finddiff
+    test.finddiff(hello, hello2, hello3);
+    
+    for(int i = 0; i < hello3.size(); i++){
+        std::cout << "difference of index " << i << " is: " << hello3[i] << "\n";
+    }
+
+    //testing fiddivide
+    test.finddivide(hello, hello3, 5); 
+    for(int i = 0; i < hello.size();  i++){
+        std::cout << "index " << i << " is: " << hello3[i] << "\n";
+
+    }
+
+
+
 }

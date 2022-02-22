@@ -21,6 +21,7 @@
 namespace genome{
 
     class lab2{
+        public: 
             //construct lab1 with an initial name and number of students
             lab2(float, float);
 

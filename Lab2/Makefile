@@ -1,12 +1,20 @@
 #makefile
 
-vectorops.o: ernsts_vector_ops.cpp ernsts_vector_ops.hpp
-	gcc -o vectorops $^
+# $@ .... name of target
+# $^ ... list of dependencies
 
-lab1stats.o: ernsts_stats.cpp ernsts_stats.hpp ernsts_stats_test.cpp
-	g++ -o cppstats $^
+ernsts_stats.o: ernsts_stats.cpp ernsts_stats.hpp
+	g++ -c $^
 
-all: vectorops.o
+ernsts_vector_ops.o: ernsts_vector_ops.cpp ernsts_vector_ops.hpp
+	g++ -c $^
+
+#ernsts_pre_processing.o: ernsts_pre_processing.cpp ernsts_pre_processing.hpp ernsts_stats.o ernsts_vector_ops.o
+
+#	g++ -c $@ $^
+
+#all: ernsts_pre_processing.o
 
 clean: 
-	rm *.c *.o all
+	rm -f *.o
+	rm -f *.gch
