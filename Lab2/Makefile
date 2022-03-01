@@ -3,16 +3,25 @@
 # $@ .... name of target
 # $^ ... list of dependencies
 
-ernsts_stats.o: ernsts_stats.cpp ernsts_stats.hpp
-	g++ -c cppstats $^
+SHELL = /bin/bash 
+#CFLAGS = -fpic -g
 
-ernsts_vector_ops.o: ernsts_vector_ops.cpp ernsts_vector_ops.hpp
-	g++ -c vectorops $^
+ernsts_stats.o: /home/ernsts/BIEN4290/Lab2/ernsts_stats.cpp /home/ernsts/BIEN4290/Lab2/ernsts_stats.hpp
+	g++ -c $^
 
-ernsts_pre_processing.o: ernsts_pre_processing.cpp ernsts_pre_processing.hpp ernsts_stats.cpp  ernsts_stats.hpp ernsts_vector_ops.cpp ernsts_vector_ops.hpp
-	g++ -o preprocess $^
+ernsts_vector_ops.o: /home/ernsts/BIEN4290/Lab2/ernsts_vector_ops.cpp /home/ernsts/BIEN4290/Lab2/ernsts_vector_ops.hpp
+	g++ -c $^
 
-all: ernsts_vector_ops.o ernsts_stats.o ernsts_pre_processing.o
+ernsts_pre_processing: /home/ernsts/BIEN4290/Lab2/ernsts_pre_processing.cpp /home/ernsts/BIEN4290/Lab2/ernsts_stats.o /home/ernsts/BIEN4290/Lab2/ernsts_vector_ops.o
+	g++ -o $@ $^
+
+ernsts_k_means: /home/ernsts/BIEN4290/Lab2/ernsts_k_means.cpp /home/ernsts/BIEN4290/Lab2/ernsts_k_means.hpp
+	g++ -o $@ $^
+
+ernsts_vector_exe: /home/ernsts/BIEN4290/Lab2/ernsts_vector_ops.o /home/ernsts/BIEN4290/Lab2/ernsts_pre_processing.o 
+	g++ -o $@ $^
+
+all: /home/ernsts/BIEN4290/Lab2/ernsts_pre_processing /home/ernsts/BIEN4290/Lab2/ernsts_stats.o /home/ernsts/BIEN4290/Lab2/ernsts_vector_ops.o
 
 clean: 
 	rm -f *.o

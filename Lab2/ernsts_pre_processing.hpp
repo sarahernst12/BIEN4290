@@ -9,6 +9,7 @@
 #include <cmath> // header to include for standarddev function
 #include <vector>
 #include <string>
+#include <math.h>
 
 //header guards
 #ifndef ernstslab2pre
@@ -23,8 +24,7 @@ namespace genomep{
             preproc(float m1, float m2);
 
             //setter functions
-            void logratio(std::vector<float> numer, std::vector<float> denom, std::vector<float> logratio);
-            
+            void logratio(std::vector<float> numer, std::vector<float> denom, std::vector<float> logratio);    
 
         private:
             //class variables
