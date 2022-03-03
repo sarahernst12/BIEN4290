@@ -54,7 +54,7 @@ float k_mean::cluster::get_mean() {
     return this->objectmean;
 }
 
-void main(int argc, char* argv[]){
+int main(int argc, char* argv[]){
 
     //what is the point of this??
     float m1, m2;

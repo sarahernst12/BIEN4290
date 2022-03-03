@@ -21,7 +21,7 @@ namespace genomep{
     class preproc{
         public: 
             //construct lab1 with an initial name and number of students
-            preproc(float m1, float m2);
+            preproc();
 
             //setter functions
             void logratio(std::vector<float> numer, std::vector<float> denom, std::vector<float> logratio);    
