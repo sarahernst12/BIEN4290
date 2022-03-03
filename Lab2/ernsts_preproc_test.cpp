@@ -149,15 +149,20 @@ int main(int argc, char* argv[]){
     std::vector<float> logratio;
 
     //subtracting background intensities from red datasets
-    lab2.finddiff(redcell, backgroundred, redcorrected);
+    lab2.finddiff(&redcell, &backgroundred, &redcorrected);
     //subtracting background intensitites from green datasets
-    lab2.finddiff(greencell, backgroundgreen, greencorrected); 
+    lab2.finddiff(&greencell, &backgroundgreen, &greencorrected); 
 
     //finding means of corrected datasets
     lab1.findmean(redcorrected);
     float redmean = lab1.getmean();
     lab1.findmean(greencorrected);
     float greenmean = lab1.getmean();
+
+    //returning means:
+    std::cout << "the mean for the red corrected data is: " << redmean << "\n";
+    std::cout << "the mean for the green corrected data is: " << greenmean << "\n";
+
 
     /*
     //normalize corrected green data by green dataset mean

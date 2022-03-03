@@ -20,13 +20,13 @@ genome::lab2::lab2(float min, float max){
     this->sum;
 }
 
-void genome::lab2::sumarray(std::vector<float> data) {
+void genome::lab2::sumarray(std::vector<float> *data) {
     //sum all elements in the array
-    int size = data.size();
-    this->sum = data[0];
+    int size = (*data).size();
+    this->sum = (*data)[0];
 
     for (int i = 0; i < size; i++){
-        this->sum += data[i]; 
+        this->sum += (*data)[i]; 
     }
 }
 
@@ -35,21 +35,21 @@ float genome::lab2::getsumarray(){
 }
 
 //calculating difference between two arrays
-void genome::lab2::finddiff(std::vector<float> data1, std::vector<float> data2, std::vector<float> difference){
-    int size1 = data1.size();
+void genome::lab2::finddiff(std::vector<float> *data1, std::vector<float> *data2, std::vector<float> *difference){
+    int size1 = (*data1).size();
     
     for(int i = 0; i < size1; i++){
-        difference[i] = data1[i] - data2[i];
+        (*difference)[i] = (*data1)[i] - (*data2)[i];
     }
     
 }
 
 //divide array by constant
-void genome::lab2::finddivide(std::vector<float> oggarr, std::vector<float> newarr, float constant){
-    int size = oggarr.size();
+void genome::lab2::finddivide(std::vector<float> *oggarr, std::vector<float> *newarr, float constant){
+    int size = (*oggarr).size();
 
     for(int i = 0; i < size; i++){
-        newarr[i] = oggarr[i] / constant;
+        (*newarr)[i] = ((*oggarr)[i] / constant);
     }
 }
 
