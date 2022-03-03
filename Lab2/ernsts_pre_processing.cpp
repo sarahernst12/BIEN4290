@@ -22,9 +22,12 @@ genomep::preproc::preproc(){
     
 }
 
-void genomep::preproc::logratio(std::vector<float> numer, std::vector<float> denom, std::vector<float> logratio){
-    int size = numer.size();
+void genomep::preproc::logratio(std::vector<float> *numer, std::vector<float> *denom, std::vector<float> *logratio){
+    float logrationum = 0.0;
+    int size = (*numer).size();
+
     for(int i = 0; i < size; i++){
-        logratio[i] = log10(numer[i] / denom[i]);
+        logrationum = log10((*numer)[i] / (*denom)[i]);
+        logratio->push_back(logrationum);
     }
 }

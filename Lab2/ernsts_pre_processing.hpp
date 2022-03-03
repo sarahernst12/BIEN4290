@@ -24,7 +24,7 @@ namespace genomep{
             preproc();
 
             //setter functions
-            void logratio(std::vector<float> numer, std::vector<float> denom, std::vector<float> logratio);    
+            void logratio(std::vector<float> * numer, std::vector<float> *denom, std::vector<float> *logratio);    
 
         private:
             //class variables

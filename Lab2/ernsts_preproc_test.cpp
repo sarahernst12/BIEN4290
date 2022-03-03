@@ -75,7 +75,7 @@ int main(int argc, char* argv[]){
     int sizered = redcell.size();
 
     //double checking
-    std::cout << "size of red sporulating file is : " << sizered << " \n";
+    //std::cout << "size of red sporulating file is : " << sizered << " \n";
     
     //OPEN RED BACKGROUND DATA FILE
     redb.open(filedatared);
@@ -91,7 +91,7 @@ int main(int argc, char* argv[]){
     int sizebackr = backgroundred.size();
 
     //double checking
-    std::cout << "size of red BACKGROUND file is : " << sizebackr << " \n";
+    //std::cout << "size of red BACKGROUND file is : " << sizebackr << " \n";
 
     //OPENING GREEN NON-SPORULATING DATA FILE
     green.open(filenamegreen);
@@ -108,7 +108,7 @@ int main(int argc, char* argv[]){
     int sizegreen = greencell.size();
     
     //double checking
-    std::cout << "size of green non-sporulating file is : " << sizegreen << " \n";
+    //std::cout << "size of green non-sporulating file is : " << sizegreen << " \n";
 
     //OPENING GREEN BACKGROUND DATA FILE
     greenb.open(filedatagreen);
@@ -125,7 +125,7 @@ int main(int argc, char* argv[]){
     int sizebackg = backgroundgreen.size();
 
     //double checking
-    std::cout << "size of green background data file is : " << sizebackg << " \n";
+    //std::cout << "size of green background data file is : " << sizebackg << " \n";
 
     //OPENING OUTPUT FILE
     cali.open(filedatacali);
@@ -135,7 +135,7 @@ int main(int argc, char* argv[]){
     }  
 
     //double checking
-    std::cout << "name of output file is: " << argv[5] << " \n";
+    //std::cout << "name of output file is: " << argv[5] << " \n\n";
 
 
     //-------------------------------------
@@ -148,36 +148,44 @@ int main(int argc, char* argv[]){
     std::vector<float> greencorrected, greennormal;
     std::vector<float> logratio;
 
+    //finding differences in datasets
     //subtracting background intensities from red datasets
     lab2.finddiff(&redcell, &backgroundred, &redcorrected);
     //subtracting background intensitites from green datasets
     lab2.finddiff(&greencell, &backgroundgreen, &greencorrected); 
 
+  
     //finding means of corrected datasets
-    lab1.findmean(redcorrected);
+    //lab1.findmean(redcorrected);
     float redmean = lab1.getmean();
-    lab1.findmean(greencorrected);
+    //lab1.findmean(greencorrected);
     float greenmean = lab1.getmean();
 
     //returning means:
-    std::cout << "the mean for the red corrected data is: " << redmean << "\n";
-    std::cout << "the mean for the green corrected data is: " << greenmean << "\n";
-
-
-    /*
+    //std::cout << "the mean for the red corrected data is: " << redmean << "\n";
+    //std::cout << "the mean for the green corrected data is: " << greenmean << "\n\n";
+    
     //normalize corrected green data by green dataset mean
-    lab2.finddivide(redcorrected, rednormal, redmean); 
-    lab2.finddivide(greencorrected, greennormal, greenmean); 
+    lab2.finddivide(&redcorrected, &rednormal, redmean); 
+    lab2.finddivide(&greencorrected, &greennormal, greenmean); 
+
+    //std::cout << "division of arrays are accurate! \n";
     
     //find log ratio
-    preproc.logratio(rednormal, greennormal, logratio);
+    preproc.logratio(&rednormal, &greennormal, &logratio);
 
+    //std::cout << "logratio has been preformed!" << " \n";
+
+    
     //print logratio to cali data file
     for(int i = 0; i < logratio.size(); i++){
         cali << logratio[i] << "\n";
     }
 
-    //handling number of genes
+    //std::cout << "output file has been outputed!" << " \n";
+
+    
+    //handling number of genes // what do i do with this?? 
     int genenum = std::stoi(genenumber);
     if(genenum > sizered || genenum > sizegreen){
         std::cout << "number of genes requested exceeds number of data points\n";
@@ -190,7 +198,8 @@ int main(int argc, char* argv[]){
     green.close();
     greenb.close();
     cali.close();
-    */
+    
 
+    std::cout << "you're allllllllll good hun! \n";
     return 0;
 }
