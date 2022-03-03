@@ -24,7 +24,7 @@ pre_processing: /home/ernsts/BIEN4290/Lab2/ernsts_pre_processing.cpp /home/ernst
 ernsts_clusters.o: /home/ernsts/BIEN4290/Lab2/ernsts_k_means.cpp /home/ernsts/BIEN4290/Lab2/ernsts_stats.o 
 	g++ -o $@ $^
 
-all: /home/ernsts/BIEN4290/Lab2/ernsts_clusters.o
+all: /home/ernsts/BIEN4290/Lab2/ernsts_stats.o /home/ernsts/BIEN4290/Lab2/ernsts_vector_ops.o /home/ernsts/BIEN4290/Lab2/pre_processing #/home/ernsts/BIEN4290/Lab2/ernsts_clusters.o
 
 clean: 
 	rm -f *.o

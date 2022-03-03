@@ -12,7 +12,6 @@
 #include <iterator>
 #include <fstream>
 #include <sstream>
-#include <iostream>
 #include <cmath> // header to include for standarddev function
 #include <vector>
 #include <string>

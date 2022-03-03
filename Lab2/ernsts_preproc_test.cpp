@@ -17,6 +17,8 @@
 #include <vector>
 #include <string>
 #include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 //creating stream for file opening
 std::ifstream red, redb, green, greenb;
@@ -24,41 +26,61 @@ std::ofstream cali;
 
 int main(int argc, char* argv[]){
     //what is the point of this??
+    //constructors from other classes
     float m1 = 0, m2 = 0;
     ernsts::lab1 lab1(m1, m2);
     genome::lab2 lab2(m1,m2);
     genomep::preproc preproc;
 
-    std::vector<float> redcorrected, rednormal;
-    std::vector<float> greencorrected, greennormal;
-    std::vector<float> logratio;
+    std::vector<float> redarray, redbarray, greenarray, greenbarray;
 
-    //getting red name file
-    std::cout <<"Please input file name containing data from sporulating cells (red): ";
-    std::string filenamered;
-    std::cin >> filenamered;
+   // FILE *filenamered, filedatared, filenamegreen, filedatagreen, filedatacali;
+
+    //getting red data
+    //std::cout <<"Please input file name containing data from sporulating cells (red): ";
+    std::string filenamered = argv[1];
+    //getting red background file
+    std::string filedatared = argv[2];
+    //getting green name file
+    //std::cout <<"Please input file name containing data from non-sporulating cells (green): ";
+    std::string filenamegreen = argv[3];
+    //getting green data
+    //std::cout <<"Please input file name containing background green data: ";
+    std::string filedatagreen = argv[4];
+    //name of file data will be written
+    //std::cout <<"Please input file name where calibrated data will be written (outputfilename): ";
+    std::string filedatacali = argv[5];
+    //number of genes to be analyzed
+    //std::cout <<"Please input number of genes to be analyzed: ";
+    std::string genenumber = argv[6];
+
+    if(argc > 8){
+        printf("number of arguments is incorrect. please try again.\n");
+    }
+
+    
+    //OPENING RED SPORULATING DATA
     red.open(filenamered);
     if(!red.is_open()){
         std::cout << "error: could not properly read red data file\n";
         return 1;
     }      
 
-    //itereate through file from start to end
+    //itereate through file from start to end to read in data
     std::istream_iterator<float> startr(red), endr;
     //put start and end of file into vector data
     std::vector<float> redcell(startr, endr);
-    
+
     //get size of vector
     int sizered = redcell.size();
-    red.close();
 
-    //getting red data
-    std::cout <<"Please input file name containing background red data: ";
-    std::string filedatared;
-    std::cin >> filedatared;
+    //double checking
+    std::cout << "size of red sporulating file is : " << sizered << " \n";
+    
+    //OPEN RED BACKGROUND DATA FILE
     redb.open(filedatared);
     if(!redb.is_open()){
-        std::cout << "error: could not properly read red backgorund data file\n";
+        std::cout << "error: could not properly read red background data file\n";
         return 1;
     }  
     //itereate through file from start to end
@@ -68,11 +90,10 @@ int main(int argc, char* argv[]){
     //get size of vector
     int sizebackr = backgroundred.size();
 
+    //double checking
+    std::cout << "size of red BACKGROUND file is : " << sizebackr << " \n";
 
-    //getting green name file
-    std::cout <<"Please input file name containing data from non-sporulating cells (green): ";
-    std::string filenamegreen;
-    std::cin >> filenamegreen;
+    //OPENING GREEN NON-SPORULATING DATA FILE
     green.open(filenamegreen);
     if(!green.is_open()){
         std::cout << "error: could not properly read green data file\n";
@@ -86,10 +107,10 @@ int main(int argc, char* argv[]){
     //get size of vector
     int sizegreen = greencell.size();
     
-    //getting green data
-    std::cout <<"Please input file name containing background green data: ";
-    std::string filedatagreen;
-    std::cin >> filedatagreen;
+    //double checking
+    std::cout << "size of green non-sporulating file is : " << sizegreen << " \n";
+
+    //OPENING GREEN BACKGROUND DATA FILE
     greenb.open(filedatagreen);
     if(!greenb.is_open()){
         std::cout << "error: could not properly read green background data file\n";
@@ -103,11 +124,31 @@ int main(int argc, char* argv[]){
     //get size of vector
     int sizebackg = backgroundgreen.size();
 
+    //double checking
+    std::cout << "size of green background data file is : " << sizebackg << " \n";
+
+    //OPENING OUTPUT FILE
+    cali.open(filedatacali);
+    if(!cali.is_open()){
+        std::cout << "error: could not properly read output data file\n";
+        return 1;
+    }  
+
+    //double checking
+    std::cout << "name of output file is: " << argv[5] << " \n";
+
+
     //-------------------------------------
     // doing preprocessing 
     //-------------------------------------
+  
 
-    //substracting background intensities from red datasets
+    //placeholder vectors for corrected and normalized data
+    std::vector<float> redcorrected, rednormal;
+    std::vector<float> greencorrected, greennormal;
+    std::vector<float> logratio;
+
+    //subtracting background intensities from red datasets
     lab2.finddiff(redcell, backgroundred, redcorrected);
     //subtracting background intensitites from green datasets
     lab2.finddiff(greencell, backgroundgreen, greencorrected); 
@@ -118,6 +159,7 @@ int main(int argc, char* argv[]){
     lab1.findmean(greencorrected);
     float greenmean = lab1.getmean();
 
+    /*
     //normalize corrected green data by green dataset mean
     lab2.finddivide(redcorrected, rednormal, redmean); 
     lab2.finddivide(greencorrected, greennormal, greenmean); 
@@ -125,33 +167,25 @@ int main(int argc, char* argv[]){
     //find log ratio
     preproc.logratio(rednormal, greennormal, logratio);
 
-    //name of file data will be written
-    std::cout <<"Please input file name where calibrated data will be written: ";
-    std::string filedatacali;
-    std::cin >> filedatacali;
-    cali.open(filedatacali);
-    if(!cali.is_open()){
-        std::cout << "error: could not properly read cali data file\n";
-        return 1;
-    }  
-
     //print logratio to cali data file
     for(int i = 0; i < logratio.size(); i++){
         cali << logratio[i] << "\n";
     }
 
-    cali.close();
-
-
-    //number of genes to be analyzed
-    std::cout <<"Please input number of genes to be analyzed: ";
-    double genenumber;
-    std::cin >> genenumber;
-    if(genenumber > sizered || genenumber > sizegreen){
+    //handling number of genes
+    int genenum = std::stoi(genenumber);
+    if(genenum > sizered || genenum > sizegreen){
         std::cout << "number of genes requested exceeds number of data points\n";
         return 1;
     }
+    
 
+    red.close();
+    redb.close();
+    green.close();
+    greenb.close();
+    cali.close();
+    */
 
     return 0;
 }
