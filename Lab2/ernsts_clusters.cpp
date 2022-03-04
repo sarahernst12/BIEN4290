@@ -18,14 +18,28 @@
 
 
 //write three output files -- one for each of the final clusters
-std::ifstream log_ratio_input;
-std::ofstream suppressedfile, stationaryfile, expressedfile;
+
 
 int main(int argc, char* argv[]){
 
     //what is the point of this??
     float m1, m2;
     ernsts::lab1 lab1(m1, m2);
+    char output_buffer[100];
+
+    FILE* gene_file;
+
+    //input/output stream for files
+    std::ifstream log_ratio_input;
+    std::ofstream suppressedfile;
+    std::ofstream stationaryfile;
+    std::ofstream expressedfile;
+
+    //using arguments
+    log_ratio_input.open(argv[1]);
+    suppressedfile.open(argv[2]);
+    stationaryfile.open(argv[3]);
+    expressedfile.open(argv[4]);
 
     // PART 3: read in data file and check that file exists
     float line;
@@ -33,14 +47,11 @@ int main(int argc, char* argv[]){
     float oldmean1 = 0.0, oldmean2 = 0.0, oldmean3 = 0.0;
     float newmean1 = 0.0, newmean2 = 0.0, newmean3 = 0.0;
 
-    std::string log_ratio_file = argv[1];
-    log_ratio_input.open(log_ratio_file);
-
     if(!log_ratio_input.is_open()){
         std::cout << "log_ratio_input.data cannot be found. it does not exist\n";
         return -1;  
     }
-    std::cout << "log_ratio_input.dat file exists wooo\n";
+    //std::cout << "log_ratio_input.dat file exists wooo\n";
 
     //itereate through file from start to end
     std::istream_iterator<float> start_log(log_ratio_input), endg;
@@ -122,8 +133,6 @@ int main(int argc, char* argv[]){
             
         }
         
-
-        
         // 3. recalculate cluster means when all points have been reassigned
         oldmean1 = cluster1.get_mean();
         oldmean2 = cluster2.get_mean();
@@ -149,60 +158,58 @@ int main(int argc, char* argv[]){
         // 4. calculate sum of absolute difference of previous & current means
         // criteria = |c1old - c1mean| + |c2old - c2mean| + |c3old - c3mean|
         criteria = abs(oldmean1 - newmean1) + abs(oldmean2 - newmean2) + abs(oldmean3 - newmean3);
-        std::cout << "criteria is currently: " << criteria << " \n";
+        //std::cout << "criteria is currently: " << criteria << " \n";
         
     }
-    //counting clusters
-    //std::cout << "count of suppressed clusters: " << supcount << " \n";
-    //std::cout << "count of stationary clusters: " << statcount << " \n";
-    //std::cout << "count of expressed clusters: " << exprescount << "\n";
-
     
     //output final cluster means to standard output
     std::cout << "cluster 1 final mean: " << cluster1.get_mean() << "\n";
     std::cout << "cluster 2 final mean: " << cluster2.get_mean() << "\n";
     std::cout << "cluster 3 final mean: " << cluster3.get_mean() << "\n";
 
-    
-    char output_buffer[100]; // 100 data points per file
-    int j = 0;
-    suppressedfile.open("suppresseddata.txt");
-    stationaryfile.open("stationarydata.txt");
-    expressedfile.open("expresseddata.txt");
 
-    /*
+   
     //opening correct file aka list of genes
-    if(normal_data = fopen("./microarray/gene_list.txt", "r")){
+    int j = 0;
+    int gene_size = 6118; //default gene size in all files
 
-        while(fgets(output_buffer, sizeof(output_buffer), normal_data) != NULL) {
-            //determining first distances
-            dist1 = cluster1.distance(normaldata.at(j));
-            dist2 = cluster2.distance(normaldata.at(j));
-            dist3 = cluster3.distance(normaldata.at(j));
+    if(gene_file = fopen("/lab/bien4290/microarray/gene_list.txt", "r")){
+        while(fgets(output_buffer, sizeof(output_buffer), gene_file) != NULL) {
+            if(j < gene_size){
+                //std::cout << "size of j = " << j << " \n";
 
-            //data point closer to cluster 1
-            if(dist1 < dist2 && dist1 < dist3){
-                //print to suppressed
-                suppressedfile << output_buffer;
-            }
-            //data point closer to cluster 2
-            else if(dist2 < dist1 && dist2 < dist3){
-                stationaryfile << output_buffer;
-            }
-            //data point closer to cluster 3
-            else if(dist3 < dist1 && dist3 < dist2){
-                expressedfile << output_buffer;
-            }
+                //determining first distances
+                dist1 = cluster1.distance(log_data.at(j));
+                dist2 = cluster2.distance(log_data.at(j));
+                dist3 = cluster3.distance(log_data.at(j));
 
-            j++; //increment to go to next data point
+                //data point closer to cluster 1
+                if(dist1 <= dist2 && dist1 < dist3){
+                    //print to suppressed
+                    suppressedfile << output_buffer;
+                }
+                //data point closer to cluster 2
+                else if(dist2 < dist1 && dist2 < dist3){
+                    stationaryfile << output_buffer;
+                }
+                //data point closer to cluster 3
+                else if(dist3 < dist1 && dist3 <= dist2){
+                    expressedfile << output_buffer;
+                }
+
+                j++; //increment to go to next data point
+            }
         }
     }
-    */
+    
+    fclose(gene_file);
 
     //close all necessary files
     suppressedfile.close();
     stationaryfile.close();
     expressedfile.close();
     log_ratio_input.close();
+
+    return 0;
 
 }

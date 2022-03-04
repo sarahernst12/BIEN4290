@@ -1,0 +1,6 @@
+cluster 1 final mean: -0.353829
+cluster 2 final mean: -0.0203811
+cluster 3 final mean: 0.477603
+1652
+3773
+693

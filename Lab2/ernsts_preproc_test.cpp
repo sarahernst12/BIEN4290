@@ -128,7 +128,6 @@ int main(int argc, char* argv[]){
     //std::cout << "size of green background data file is : " << sizebackg << " \n";
 
     //OPENING OUTPUT FILE
-    //log_ratio_input.dat
     cali.open(filedatacali);
     if(!cali.is_open()){
         std::cout << "error: could not properly read output data file\n";
@@ -201,6 +200,6 @@ int main(int argc, char* argv[]){
     cali.close();
     
 
-    std::cout << "you're allllllllll good hun! \n";
+    //std::cout << "you're allllllllll good hun! \n";
     return 0;
 }

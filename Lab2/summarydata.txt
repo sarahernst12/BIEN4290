@@ -1,0 +1,137 @@
+Time Point #0: 
+Number of suppressed data points: 
+0
+Number of stationary data points: 
+0
+Number of expressed data points: 
+0
+Time Point #1: 
+cluster 1 final mean: -0.592421
+cluster 2 final mean: -0.13032
+cluster 3 final mean: 0.184763
+Number of suppressed data points: 
+694
+Number of stationary data points: 
+3719
+Number of expressed data points: 
+1705
+Time Point #2: 
+cluster 1 final mean: -0.353896
+cluster 2 final mean: -0.054622
+cluster 3 final mean: 0.249739
+Number of suppressed data points: 
+1135
+Number of stationary data points: 
+3651
+Number of expressed data points: 
+1332
+Time Point #3: 
+cluster 1 final mean: -0.353829
+cluster 2 final mean: -0.0203811
+cluster 3 final mean: 0.477603
+Number of suppressed data points: 
+1652
+Number of stationary data points: 
+3773
+Number of expressed data points: 
+693
+Time Point #4: 
+cluster 1 final mean: -0.366762
+cluster 2 final mean: 0.0509473
+cluster 3 final mean: 0.713145
+Number of suppressed data points: 
+1954
+Number of stationary data points: 
+3466
+Number of expressed data points: 
+698
+Time Point #5: 
+cluster 1 final mean: -0.317759
+cluster 2 final mean: 0.0361545
+cluster 3 final mean: 0.65281
+Number of suppressed data points: 
+2008
+Number of stationary data points: 
+3486
+Number of expressed data points: 
+624
+Time Point #6: 
+cluster 1 final mean: -0.279816
+cluster 2 final mean: 0.0569921
+cluster 3 final mean: 0.759172
+Number of suppressed data points: 
+2350
+Number of stationary data points: 
+3261
+Number of expressed data points: 
+507
+Time Point #0: 
+cluster 1 final mean: -0.137613
+cluster 2 final mean: -0.0516575
+cluster 3 final mean: 0.0402972
+Number of suppressed data points: 
+1816
+Number of stationary data points: 
+2727
+Number of expressed data points: 
+1575
+Time Point #1: 
+cluster 1 final mean: -0.592421
+cluster 2 final mean: -0.13032
+cluster 3 final mean: 0.184763
+Number of suppressed data points: 
+694
+Number of stationary data points: 
+3719
+Number of expressed data points: 
+1705
+Time Point #2: 
+cluster 1 final mean: -0.353896
+cluster 2 final mean: -0.054622
+cluster 3 final mean: 0.249739
+Number of suppressed data points: 
+1135
+Number of stationary data points: 
+3651
+Number of expressed data points: 
+1332
+Time Point #3: 
+cluster 1 final mean: -0.353829
+cluster 2 final mean: -0.0203811
+cluster 3 final mean: 0.477603
+Number of suppressed data points: 
+1652
+Number of stationary data points: 
+3773
+Number of expressed data points: 
+693
+Time Point #4: 
+cluster 1 final mean: -0.366762
+cluster 2 final mean: 0.0509473
+cluster 3 final mean: 0.713145
+Number of suppressed data points: 
+1954
+Number of stationary data points: 
+3466
+Number of expressed data points: 
+698
+Time Point #5: 
+cluster 1 final mean: -0.317759
+cluster 2 final mean: 0.0361545
+cluster 3 final mean: 0.65281
+Number of suppressed data points: 
+2008
+Number of stationary data points: 
+3486
+Number of expressed data points: 
+624
+Time Point #6: 
+cluster 1 final mean: -0.279816
+cluster 2 final mean: 0.0569921
+cluster 3 final mean: 0.759172
+Number of suppressed data points: 
+2350
+Number of stationary data points: 
+3261
+Number of expressed data points: 
+507
