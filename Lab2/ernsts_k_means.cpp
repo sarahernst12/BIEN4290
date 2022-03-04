@@ -23,8 +23,6 @@ k_mean::cluster::cluster() {
     this->clusterdata;
 }
 
-
-
 float k_mean::cluster::distance(float data) {
     // initialize variables
     float distance = 0.0;
