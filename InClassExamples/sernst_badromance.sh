@@ -9,13 +9,26 @@ lyrics3="Ra-ra-ah-ah-ah"
 lyrics4="Roma Roma-ma"
 lyrics5="Gaga, Ooh la-la"
 lyrics6="Want your bad romance"
-let x=2
 
-while [$x -gt 0]
+for (( x=1;x<=6;x++ ));
 do
-    echo "$lyrics1"
-    echo "$lyrics2"
-    let x=x-1
+    if [ $x -eq 1 ] || [ $x -eq 3 ];
+    then
+        echo "$lyrics1"
+    elif [ $x -eq 2 ] || [ $x -eq 4 ];
+    then    
+        echo "$lyrics2"
+    elif [ $x -eq 5 ] || [ $x -eq 9 ];
+    then
+        echo "$lyrics3"
+    elif [ $x -eq 6 ] || [ $x -eq 10 ];
+    then
+        echo "$lyrics4"
+        elif [ $x -eq 7 ] || [ $x -eq 11 ];
+    then
+        echo "$lyrics5"
+    elif [ $x -eq 8 ] || [ $x -eq 12 ];
+    then
+        echo "$lyrics6"
+    fi
 done
-
-

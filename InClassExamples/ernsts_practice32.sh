@@ -6,9 +6,18 @@
 
 wget -N https://raw.githubusercontent.com/sarahernst12/BIEN4290/master/Lab1/ernsts_stats.cpp
 
-grep "ernsts::lab1::" < ernsts_stats.cpp > practice.txt
-practicedoc='cat practice.txt'
-$practicedoc | sed 's/void ernsts::lab1:://'
+#function headers
+grep ".*::.*(" < ernsts_stats.cpp > practice.txt
+
+ 
+echo "namespace:" >> practice.txt
+#add line to bottom of same file
+grep ".*::" < ernsts_stats.cpp > practice.txt | sed 's/::.*//g'
+#$practicedoc | sed 's/void ernsts::lab1:://'
+
+# determining class of all functions
+classname=$(grep -m1 "::.*" ./ernsts_stats.cpp | sed 's/.*::.*:://g')
+# echo $classname
 
 
 

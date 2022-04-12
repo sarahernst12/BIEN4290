@@ -1,11 +1,1 @@
 ernsts::lab1::lab1(float min, float max){
-void ernsts::lab1::findmin(std::vector<float> data) {
-float ernsts::lab1::getmin(){
-void ernsts::lab1::findmax(std::vector<float> data) {
-float ernsts::lab1::getmax(){
-void ernsts::lab1::findmean(std::vector<float> data) {
-float ernsts::lab1::getmean() {
-void ernsts::lab1::findstandarddev(std::vector<float> data) {
-float ernsts::lab1::getstandarddev(){
-void ernsts::lab1::findhistogram(std::vector<float> data){
-std::vector<float> ernsts::lab1::gethistogram(){
