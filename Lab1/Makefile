@@ -4,14 +4,14 @@
 # $^ ... list of dependencies
 
 SHELL = /bin/bash 
-CC = g++ -c
+CC = g++
 CFLAGS = -fPIC -g  #compiler flags
 
-ernsts_stats.o: /home/ernsts/BIEN4290/MiniProjects/Mini_Project1/ernsts_MiniProject1.cpp 
-	$(CC) $(CFLAGS) $^ -lm
+ernsts_stats.o: /home/ernsts/BIEN4290/Lab1/ernsts_stats.cpp /home/ernsts/BIEN4290/Lab1/ernsts_stats.hpp
+	$(CC) $(CFLAGS) -o $@ $< -lm
 	
 libstats.so: ernsts_stats.o
-	$(CC) -shared $^ -o 
+	$(CC) -shared $^ -o $@
 
 all: libstats.so
 

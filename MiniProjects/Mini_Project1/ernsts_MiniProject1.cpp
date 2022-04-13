@@ -68,5 +68,9 @@ int main(int argc, char* argv[]){
         std::cout << "standard deviation is: " << standarddev << "\n";
 
     }
+    else{
+        std::cout << "error: could not properly read data file\n";
+        return 1;
+    }
 
 }

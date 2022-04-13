@@ -236,6 +236,6 @@ std::vector<float> ernsts::lab1::gethistogram(){
 }
 
 
-    // int main(){
-    //     return 0;
-    // }
+     int main(){
+         return 0;
+     }
