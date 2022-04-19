@@ -5,7 +5,7 @@
 * description: calculate statistics of airspeed volecity of swallows
 */
 
-#include "/home/ernsts/BIEN4290/Lab1/ernsts_stats.hpp"
+#include "ernsts_stats.hpp"
 #include <iostream> 
 #include <iterator>
 #include <fstream>
